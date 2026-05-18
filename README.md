@@ -30,6 +30,9 @@ The high aspect ratio and non-orthogonality are inherent to a wall-resolved RANS
 mesh (y⁺ < 1) in a curved annular passage. These characteristics are handled
 differently by the two solvers — see the Solver Comparison section.
 
+**Midspan mesh slice (R = 171.4 mm) — blade passage with wall-resolved boundary layer:**
+![Stator mesh](simple/mesh_midspan.png)
+
 ### CGNS Import
 
 The mesh is exported as an unstructured HEXA_8 CGNS file. The standard OpenFOAM
