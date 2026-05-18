@@ -1,0 +1,72 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  13
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      controlDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+application     fluid;
+
+startFrom       startTime;
+startTime       0;
+stopAt          endTime;
+endTime         2000;       // iterations (deltaT 1, steadyState)
+deltaT          1;
+
+writeControl    timeStep;
+writeInterval   100;
+purgeWrite      3;
+
+writeFormat     binary;
+writePrecision  8;
+
+runTimeModifiable true;
+
+functions
+{
+    residuals
+    {
+        type            residuals;
+        libs            ("libutilityFunctionObjects.so");
+        fields          (p U T k omega);
+        writeControl    timeStep;
+        writeInterval   1;
+    }
+
+    pt_inlet
+    {
+        type            surfaceFieldValue;
+        libs            ("libfieldFunctionObjects.so");
+        fields          (p);
+        operation       areaAverage;
+        patch           NONREFLECTIVE_INFLOW;
+        writeControl    timeStep;
+        writeInterval   1;
+        writeFields     false;
+        log             true;
+    }
+
+    pt_outlet
+    {
+        type            surfaceFieldValue;
+        libs            ("libfieldFunctionObjects.so");
+        fields          (p);
+        operation       areaAverage;
+        patch           NONREFLECTIVE_OUTFLOW;
+        writeControl    timeStep;
+        writeInterval   1;
+        writeFields     false;
+        log             true;
+    }
+}
+
+// ************************************************************************* //

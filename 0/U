@@ -1,0 +1,60 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  13
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    format      ascii;
+    class       volVectorField;
+    location    "0";
+    object      U;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 1 -1 0 0 0 0];
+
+internalField   uniform (100 0 0);
+
+boundaryField
+{
+    NONREFLECTIVE_INFLOW
+    {
+        type            fixedValue;
+        value           uniform (100 0 0);
+    }
+
+    NONREFLECTIVE_OUTFLOW
+    {
+        type            zeroGradient;
+    }
+
+    NO_SLIP_WALL_WITH_SPECIFIED_V
+    {
+        type            noSlip;
+    }
+
+    NO_SLIP_WALL_WITH_SPECIFIED_V_2
+    {
+        type            noSlip;
+    }
+
+    NO_SLIP_IN_RELATIVE_FRAME
+    {
+        type            noSlip;
+    }
+
+    PERIODIC_FACE
+    {
+        type            cyclic;
+    }
+
+    PERIODIC_SHADOW_FACE
+    {
+        type            cyclic;
+    }
+}
+
+// ************************************************************************* //

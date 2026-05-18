@@ -1,0 +1,66 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  13
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    format      ascii;
+    class       volScalarField;
+    location    "0";
+    object      p;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+// Pt_in = 60 psia = 413686 Pa  (used as inlet static p IC — shockFluid fixes p at inlet)
+// Ps_out = 45 psia = 310264 Pa
+pIn     413686;
+pOut    310264;
+
+dimensions      [1 -1 -2 0 0 0 0];
+
+internalField   uniform $pIn;
+
+boundaryField
+{
+    NONREFLECTIVE_INFLOW
+    {
+        type            fixedValue;
+        value           uniform $pIn;
+    }
+
+    NONREFLECTIVE_OUTFLOW
+    {
+        type            fixedValue;
+        value           uniform $pOut;
+    }
+
+    NO_SLIP_WALL_WITH_SPECIFIED_V
+    {
+        type            zeroGradient;
+    }
+
+    NO_SLIP_WALL_WITH_SPECIFIED_V_2
+    {
+        type            zeroGradient;
+    }
+
+    NO_SLIP_IN_RELATIVE_FRAME
+    {
+        type            zeroGradient;
+    }
+
+    PERIODIC_FACE
+    {
+        type            cyclic;
+    }
+
+    PERIODIC_SHADOW_FACE
+    {
+        type            cyclic;
+    }
+}
+
+// ************************************************************************* //

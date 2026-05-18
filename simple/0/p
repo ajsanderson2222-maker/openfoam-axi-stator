@@ -1,0 +1,46 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  13
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    format      ascii;
+    class       volScalarField;
+    location    "0";
+    object      p;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+// Pt_in = 60 psia = 413686 Pa
+// Ps_out = 45 psia = 310264 Pa
+
+dimensions      [1 -1 -2 0 0 0 0];
+
+internalField   uniform 400000;
+
+boundaryField
+{
+    NONREFLECTIVE_INFLOW
+    {
+        type            totalPressure;
+        p0              uniform 413686;
+        value           uniform 413686;
+    }
+
+    NONREFLECTIVE_OUTFLOW
+    {
+        type            fixedValue;
+        value           uniform 310264;
+    }
+
+    NO_SLIP_WALL_WITH_SPECIFIED_V   { type zeroGradient; }
+    NO_SLIP_WALL_WITH_SPECIFIED_V_2 { type zeroGradient; }
+    NO_SLIP_IN_RELATIVE_FRAME       { type zeroGradient; }
+    PERIODIC_FACE                   { type cyclic; }
+    PERIODIC_SHADOW_FACE            { type cyclic; }
+}
+
+// ************************************************************************* //
