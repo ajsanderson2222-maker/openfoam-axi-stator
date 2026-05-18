@@ -175,6 +175,10 @@ At this rate, reaching one flow-through time (≈0.6 ms) requires approximately
 **6 hours** on 8 cores. Reaching a statistically stationary ΔPt requires
 several flow-through times — O(days) of wall clock on this mesh.
 
+**ΔPt history and solver residuals (0.094 ms of physical time, still transient):**
+
+![shockFluid results](results.png)
+
 ---
 
 #### fluid / SIMPLE — Implicit Pressure-Based (Segregated)
