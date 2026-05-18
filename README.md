@@ -245,6 +245,18 @@ field becomes self-consistent.
 Convergence criteria (residual < 1×10⁻⁴) were met for all variables:
 p = 9.9×10⁻⁵, Ux = 3.2×10⁻⁵, k = 6.1×10⁻⁵, ω = 7.1×10⁻⁷.
 
+**Residuals and total pressure drop:**
+
+![SIMPLE convergence](simple/convergence_simple.png)
+
+**Midspan Mach number contour (R = 171.4 mm):**
+
+![Mach midspan](simple/mach_midspan.png)
+
+The flow accelerates from Ma ≈ 0.15 at the inlet to Ma ≈ 0.72 on the
+suction surface near the throat, consistent with the isentropic prediction
+of Ma ≈ 0.66 at the design exit static pressure.
+
 ---
 
 ### Wall-Clock Summary
