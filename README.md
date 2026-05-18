@@ -32,7 +32,7 @@ differently by the two solvers — see the Solver Comparison section.
 
 ### CGNS Import
 
-WAND exports an unstructured HEXA_8 CGNS file. The standard OpenFOAM
+The mesh is exported as an unstructured HEXA_8 CGNS file. The standard OpenFOAM
 `cgnsToFoam` utility (from foam-extend) is not portable to OF13 due to
 dependency on the unmaintained `libcgnsoo3` library. Instead, `cgns_to_foam.py`
 reads the CGNS file directly via `h5py` and writes the OpenFOAM `polyMesh`
@@ -329,8 +329,6 @@ python3 plot_results.py          # shockFluid residuals and ΔPt
 ---
 
 ## References
-
-ADS WAND mesh generation software  
 OpenFOAM 13 — openfoam.org  
 Kurganov, A. and Tadmor, E. (2000). *New high-resolution central schemes for
 nonlinear conservation laws and convection–diffusion equations.* Journal of
