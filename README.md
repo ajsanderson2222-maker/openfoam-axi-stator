@@ -10,7 +10,7 @@ turbomachinery design loops.
 ## Geometry and Mesh
 
 The geometry is a single stator passage from a multi-stage axial turbine.
-The mesh was generated externally in ADS WAND and exported as CGNS
+The mesh was generated externally and exported as CGNS
 (`Axial_Comp.cgns`), then converted to OpenFOAM polyMesh format using the
 included Python converter `cgns_to_foam.py`.
 
